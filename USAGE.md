@@ -1,22 +1,25 @@
 <!-- Start SDK Example Usage [usage] -->
 ```python
 import mailengine
-from mailengine.models import operations
+from mailengine.models import components
 
 s = mailengine.MailEngine(
-    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
+    api_key="<YOUR_API_KEY_HERE>",
 )
 
-res = s.send_email(request=operations.SendEmailRequestBody(
-    recipient_email='john.doe@example.com',
-    recipient_name='John Doe',
-    sender_email='noreply@example.com',
-    sender_name='No Reply',
-    email_subject='Important Information',
-    email_content='This is a test email content.',
+res = s.pet.update_pet(request=components.Pet(
+    name='doggie',
+    photo_urls=[
+        '<value>',
+    ],
+    id=10,
+    category=components.Category(
+        id=1,
+        name='Dogs',
+    ),
 ))
 
-if res is not None:
+if res.pet is not None:
     # handle response
     pass
 
