@@ -5,9 +5,9 @@ sources:
         inputs:
             - location: openapi.yaml
 targets:
-    my-first-target:
+    python-package:
         target: python
         source: sample-source
         publish:
             pypi:
-                token: $pypackage
+                token: $pypi_token

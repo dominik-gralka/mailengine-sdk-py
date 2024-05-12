@@ -16,5 +16,9 @@ res = s.send_email(request=operations.SendEmailRequestBody(
     email_content='This is a test email content.',
 ))
 
+if res is not None:
+    # handle response
+    pass
+
 ```
 <!-- End SDK Example Usage [usage] -->
