@@ -1,4 +1,4 @@
-# UpdateUserResponse
+# SendEmailResponse
 
 
 ## Fields

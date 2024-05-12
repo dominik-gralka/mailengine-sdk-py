@@ -5,24 +5,15 @@ import requests as requests_http
 from ._hooks import SDKHooks
 from .utils import utils
 from .utils.retries import RetryConfig
-from dataclasses import dataclass, field
-from enum import Enum
+from dataclasses import dataclass
 from mailengine.models import components
-from typing import Callable, Dict, List, Optional, Tuple, Union
+from typing import Callable, Dict, Optional, Tuple, Union
 
 
 SERVERS = [
-    'https://{environment}.petstore.io',
-    # A per-environment API.
+    'https://mailengine.umbratic.com/api',
 ]
 """Contains the list of servers available to the SDK"""
-
-class ServerEnvironment(str, Enum):
-    r"""The environment name. Defaults to the production environment."""
-    PROD = 'prod'
-    STAGING = 'staging'
-    DEV = 'dev'
-
 
 @dataclass
 class SDKConfiguration:
@@ -30,12 +21,11 @@ class SDKConfiguration:
     security: Union[components.Security,Callable[[], components.Security]] = None
     server_url: Optional[str] = ''
     server_idx: Optional[int] = 0
-    server_defaults: List[Dict[str, str]] = field(default_factory=List)
     language: str = 'python'
-    openapi_doc_version: str = '1.0.0'
-    sdk_version: str = '0.0.1'
+    openapi_doc_version: str = '0.1.0'
+    sdk_version: str = '0.1.0'
     gen_version: str = '2.326.3'
-    user_agent: str = 'speakeasy-sdk/python 0.0.1 2.326.3 1.0.0 umbratic-mailengine'
+    user_agent: str = 'speakeasy-sdk/python 0.1.0 2.326.3 0.1.0 umbratic-mailengine'
     retry_config: Optional[RetryConfig] = None
 
     def __post_init__(self):
@@ -47,7 +37,7 @@ class SDKConfiguration:
         if self.server_idx is None:
             self.server_idx = 0
 
-        return SERVERS[self.server_idx], self.server_defaults[self.server_idx]
+        return SERVERS[self.server_idx], {}
 
 
     def get_hooks(self) -> SDKHooks:

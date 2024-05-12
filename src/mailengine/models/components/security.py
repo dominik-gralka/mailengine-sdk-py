@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 import dataclasses
+from typing import Optional
 
 
 @dataclasses.dataclass
 class Security:
-    api_key: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'api_key' }})
+    bearer_auth: Optional[str] = dataclasses.field(default=None, metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})
     
 

@@ -1,4 +1,5 @@
 workflowVersion: 1.0.0
+speakeasyVersion: latest
 sources:
     sample-source:
         inputs:
@@ -7,3 +8,6 @@ targets:
     my-first-target:
         target: python
         source: sample-source
+        publish:
+            pypi:
+                token: $pypackage

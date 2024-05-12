@@ -31,25 +31,22 @@ pip install git+<UNSET>.git
 
 ```python
 import mailengine
-from mailengine.models import components
+from mailengine.models import operations
 
 s = mailengine.MailEngine(
-    api_key="<YOUR_API_KEY_HERE>",
+    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-res = s.pet.update_pet(request=components.Pet(
-    name='doggie',
-    photo_urls=[
-        '<value>',
-    ],
-    id=10,
-    category=components.Category(
-        id=1,
-        name='Dogs',
-    ),
+res = s.send_email(request=operations.SendEmailRequestBody(
+    recipient_email='john.doe@example.com',
+    recipient_name='John Doe',
+    sender_email='noreply@example.com',
+    sender_name='No Reply',
+    email_subject='Important Information',
+    email_content='This is a test email content.',
 ))
 
-if res.pet is not None:
+if res is not None:
     # handle response
     pass
 
@@ -59,32 +56,9 @@ if res.pet is not None:
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
-### [pet](docs/sdks/pet/README.md)
+### [MailEngine SDK](docs/sdks/mailengine/README.md)
 
-* [update_pet](docs/sdks/pet/README.md#update_pet) - Update an existing pet
-* [add_pet](docs/sdks/pet/README.md#add_pet) - Add a new pet to the store
-* [find_pets_by_status](docs/sdks/pet/README.md#find_pets_by_status) - Finds Pets by status
-* [find_pets_by_tags](docs/sdks/pet/README.md#find_pets_by_tags) - Finds Pets by tags
-* [get_pet_by_id](docs/sdks/pet/README.md#get_pet_by_id) - Find pet by ID
-* [delete_pet](docs/sdks/pet/README.md#delete_pet) - Deletes a pet
-* [upload_file](docs/sdks/pet/README.md#upload_file) - uploads an image
-
-### [store](docs/sdks/store/README.md)
-
-* [get_inventory](docs/sdks/store/README.md#get_inventory) - Returns pet inventories by status
-* [place_order](docs/sdks/store/README.md#place_order) - Place an order for a pet
-* [get_order_by_id](docs/sdks/store/README.md#get_order_by_id) - Find purchase order by ID
-* [delete_order](docs/sdks/store/README.md#delete_order) - Delete purchase order by ID
-
-### [user](docs/sdks/user/README.md)
-
-* [create_user](docs/sdks/user/README.md#create_user) - Create user
-* [create_users_with_list_input](docs/sdks/user/README.md#create_users_with_list_input) - Creates list of users with given input array
-* [login_user](docs/sdks/user/README.md#login_user) - Logs user into the system
-* [logout_user](docs/sdks/user/README.md#logout_user) - Logs out current logged in user session
-* [get_user_by_name](docs/sdks/user/README.md#get_user_by_name) - Get user by user name
-* [update_user](docs/sdks/user/README.md#update_user) - Update user
-* [delete_user](docs/sdks/user/README.md#delete_user) - Delete user
+* [send_email](docs/sdks/mailengine/README.md#send_email) - Send an email
 <!-- End Available Resources and Operations [operations] -->
 
 <!-- Start Error Handling [errors] -->
@@ -92,50 +66,35 @@ if res.pet is not None:
 
 Handling errors in this SDK should largely match your expectations.  All operations return a response object or raise an error.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate Error type.
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.APIErrorInvalidInput | 400                         | application/json            |
-| errors.APIErrorUnauthorized | 401                         | application/json            |
-| errors.APIErrorNotFound     | 404                         | application/json            |
-| errors.SDKError             | 4xx-5xx                     | */*                         |
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ### Example
 
 ```python
 import mailengine
-from mailengine.models import components, errors
+from mailengine.models import errors, operations
 
 s = mailengine.MailEngine(
-    api_key="<YOUR_API_KEY_HERE>",
+    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
 res = None
 try:
-    res = s.pet.update_pet(request=components.Pet(
-    name='doggie',
-    photo_urls=[
-        '<value>',
-    ],
-    id=10,
-    category=components.Category(
-        id=1,
-        name='Dogs',
-    ),
+    res = s.send_email(request=operations.SendEmailRequestBody(
+    recipient_email='john.doe@example.com',
+    recipient_name='John Doe',
+    sender_email='noreply@example.com',
+    sender_name='No Reply',
+    email_subject='Important Information',
+    email_content='This is a test email content.',
 ))
-except errors.APIErrorInvalidInput as e:
-    # handle exception
-    raise(e)
-except errors.APIErrorUnauthorized as e:
-    # handle exception
-    raise(e)
-except errors.APIErrorNotFound as e:
-    # handle exception
-    raise(e)
 except errors.SDKError as e:
     # handle exception
     raise(e)
 
-if res.pet is not None:
+if res is not None:
     # handle response
     pass
 
@@ -151,67 +110,57 @@ You can override the default server globally by passing a server index to the `s
 
 | # | Server | Variables |
 | - | ------ | --------- |
-| 0 | `https://{environment}.petstore.io` | `environment` (default is `prod`) |
+| 0 | `https://mailengine.umbratic.com/api` | None |
 
 #### Example
 
 ```python
 import mailengine
-from mailengine.models import components
+from mailengine.models import operations
 
 s = mailengine.MailEngine(
     server_idx=0,
-    api_key="<YOUR_API_KEY_HERE>",
+    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-res = s.pet.update_pet(request=components.Pet(
-    name='doggie',
-    photo_urls=[
-        '<value>',
-    ],
-    id=10,
-    category=components.Category(
-        id=1,
-        name='Dogs',
-    ),
+res = s.send_email(request=operations.SendEmailRequestBody(
+    recipient_email='john.doe@example.com',
+    recipient_name='John Doe',
+    sender_email='noreply@example.com',
+    sender_name='No Reply',
+    email_subject='Important Information',
+    email_content='This is a test email content.',
 ))
 
-if res.pet is not None:
+if res is not None:
     # handle response
     pass
 
 ```
 
-#### Variables
-
-Some of the server options above contain variables. If you want to set the values of those variables, the following optional parameters are available when initializing the SDK client instance:
- * `environment: models.ServerEnvironment`
 
 ### Override Server URL Per-Client
 
 The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
 ```python
 import mailengine
-from mailengine.models import components
+from mailengine.models import operations
 
 s = mailengine.MailEngine(
-    server_url="https://{environment}.petstore.io",
-    api_key="<YOUR_API_KEY_HERE>",
+    server_url="https://mailengine.umbratic.com/api",
+    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-res = s.pet.update_pet(request=components.Pet(
-    name='doggie',
-    photo_urls=[
-        '<value>',
-    ],
-    id=10,
-    category=components.Category(
-        id=1,
-        name='Dogs',
-    ),
+res = s.send_email(request=operations.SendEmailRequestBody(
+    recipient_email='john.doe@example.com',
+    recipient_name='John Doe',
+    sender_email='noreply@example.com',
+    sender_name='No Reply',
+    email_subject='Important Information',
+    email_content='This is a test email content.',
 ))
 
-if res.pet is not None:
+if res is not None:
     # handle response
     pass
 
@@ -241,32 +190,29 @@ s = mailengine.MailEngine(client=http_client)
 
 This SDK supports the following security scheme globally:
 
-| Name      | Type      | Scheme    |
-| --------- | --------- | --------- |
-| `api_key` | apiKey    | API key   |
+| Name          | Type          | Scheme        |
+| ------------- | ------------- | ------------- |
+| `bearer_auth` | http          | HTTP Bearer   |
 
-To authenticate with the API the `api_key` parameter must be set when initializing the SDK client instance. For example:
+To authenticate with the API the `bearer_auth` parameter must be set when initializing the SDK client instance. For example:
 ```python
 import mailengine
-from mailengine.models import components
+from mailengine.models import operations
 
 s = mailengine.MailEngine(
-    api_key="<YOUR_API_KEY_HERE>",
+    bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-res = s.pet.update_pet(request=components.Pet(
-    name='doggie',
-    photo_urls=[
-        '<value>',
-    ],
-    id=10,
-    category=components.Category(
-        id=1,
-        name='Dogs',
-    ),
+res = s.send_email(request=operations.SendEmailRequestBody(
+    recipient_email='john.doe@example.com',
+    recipient_name='John Doe',
+    sender_email='noreply@example.com',
+    sender_name='No Reply',
+    email_subject='Important Information',
+    email_content='This is a test email content.',
 ))
 
-if res.pet is not None:
+if res is not None:
     # handle response
     pass
 

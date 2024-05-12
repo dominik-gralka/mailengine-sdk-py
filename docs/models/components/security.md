@@ -5,4 +5,4 @@
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `api_key`          | *str*              | :heavy_check_mark: | N/A                |
+| `bearer_auth`      | *Optional[str]*    | :heavy_minus_sign: | N/A                |

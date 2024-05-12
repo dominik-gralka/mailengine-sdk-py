@@ -1,18 +1,17 @@
 lockVersion: 2.0.0
 id: 49580bac-54c4-4f63-8224-f939fca2f287
 management:
-  docChecksum: 7c524b4be7afdadc4b2f448072865ac4
-  docVersion: 1.0.0
+  docChecksum: 1276d2be13391d1ba6195e7e4934d87e
+  docVersion: 0.1.0
   speakeasyVersion: 1.286.0
   generationVersion: 2.326.3
-  releaseVersion: 0.0.1
-  configChecksum: 826eaf5fed47e4c23e471390f05e0586
+  releaseVersion: 0.1.0
+  configChecksum: acb50a58349e1d5e77783d18512720b5
 features:
   python:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.3
     core: 4.6.7
-    flattening: 2.81.1
     globalSecurity: 2.83.5
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
@@ -21,9 +20,6 @@ features:
     sdkHooks: 0.1.0
 generatedFiles:
   - src/mailengine/sdkconfiguration.py
-  - src/mailengine/pet.py
-  - src/mailengine/store.py
-  - src/mailengine/user.py
   - src/mailengine/sdk.py
   - py.typed
   - pylintrc
@@ -33,86 +29,19 @@ generatedFiles:
   - src/mailengine/utils/retries.py
   - src/mailengine/utils/utils.py
   - src/mailengine/models/errors/sdkerror.py
-  - src/mailengine/models/operations/updatepet.py
-  - src/mailengine/models/operations/addpet.py
-  - src/mailengine/models/operations/findpetsbystatus.py
-  - src/mailengine/models/operations/findpetsbytags.py
-  - src/mailengine/models/operations/getpetbyid.py
-  - src/mailengine/models/operations/deletepet.py
-  - src/mailengine/models/operations/uploadfile.py
-  - src/mailengine/models/operations/getinventory.py
-  - src/mailengine/models/operations/placeorder.py
-  - src/mailengine/models/operations/getorderbyid.py
-  - src/mailengine/models/operations/deleteorder.py
-  - src/mailengine/models/operations/createuser.py
-  - src/mailengine/models/operations/createuserswithlistinput.py
-  - src/mailengine/models/operations/loginuser.py
-  - src/mailengine/models/operations/logoutuser.py
-  - src/mailengine/models/operations/getuserbyname.py
-  - src/mailengine/models/operations/updateuser.py
-  - src/mailengine/models/operations/deleteuser.py
-  - src/mailengine/models/components/pet.py
-  - src/mailengine/models/components/tag.py
-  - src/mailengine/models/components/category.py
+  - src/mailengine/models/operations/sendemail.py
   - src/mailengine/models/components/httpmetadata.py
-  - src/mailengine/models/components/apiresponse.py
-  - src/mailengine/models/components/order.py
-  - src/mailengine/models/components/user.py
   - src/mailengine/models/components/security.py
-  - src/mailengine/models/errors/apierrorinvalidinput.py
-  - src/mailengine/models/errors/apierrorunauthorized.py
-  - src/mailengine/models/errors/apierrornotfound.py
   - src/mailengine/models/__init__.py
   - src/mailengine/models/errors/__init__.py
   - src/mailengine/models/operations/__init__.py
   - src/mailengine/models/components/__init__.py
-  - docs/models/operations/updatepetresponse.md
-  - docs/models/operations/addpetresponse.md
-  - docs/models/operations/status.md
-  - docs/models/operations/findpetsbystatusrequest.md
-  - docs/models/operations/findpetsbystatusresponse.md
-  - docs/models/operations/findpetsbytagsrequest.md
-  - docs/models/operations/findpetsbytagsresponse.md
-  - docs/models/operations/getpetbyidrequest.md
-  - docs/models/operations/getpetbyidresponse.md
-  - docs/models/operations/deletepetrequest.md
-  - docs/models/operations/deletepetresponse.md
-  - docs/models/operations/uploadfilerequest.md
-  - docs/models/operations/uploadfileresponse.md
-  - docs/models/operations/getinventoryresponse.md
-  - docs/models/operations/placeorderresponse.md
-  - docs/models/operations/getorderbyidrequest.md
-  - docs/models/operations/getorderbyidresponse.md
-  - docs/models/operations/deleteorderrequest.md
-  - docs/models/operations/deleteorderresponse.md
-  - docs/models/operations/createuserresponse.md
-  - docs/models/operations/createuserswithlistinputresponse.md
-  - docs/models/operations/loginuserrequest.md
-  - docs/models/operations/loginuserresponse.md
-  - docs/models/operations/logoutuserresponse.md
-  - docs/models/operations/getuserbynamerequest.md
-  - docs/models/operations/getuserbynameresponse.md
-  - docs/models/operations/updateuserrequest.md
-  - docs/models/operations/updateuserresponse.md
-  - docs/models/operations/deleteuserrequest.md
-  - docs/models/operations/deleteuserresponse.md
-  - docs/models/components/status.md
-  - docs/models/components/pet.md
-  - docs/models/components/tag.md
-  - docs/models/components/category.md
+  - docs/models/operations/contenttype.md
+  - docs/models/operations/sendemailrequestbody.md
+  - docs/models/operations/sendemailresponse.md
   - docs/models/components/httpmetadata.md
-  - docs/models/components/apiresponse.md
-  - docs/models/components/orderstatus.md
-  - docs/models/components/order.md
-  - docs/models/components/user.md
   - docs/models/components/security.md
-  - docs/models/errors/apierrorinvalidinput.md
-  - docs/models/errors/apierrorunauthorized.md
-  - docs/models/errors/apierrornotfound.md
   - docs/sdks/mailengine/README.md
-  - docs/sdks/pet/README.md
-  - docs/sdks/store/README.md
-  - docs/sdks/user/README.md
   - USAGE.md
   - .gitattributes
   - src/mailengine/_hooks/sdkhooks.py
