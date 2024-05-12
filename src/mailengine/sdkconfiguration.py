@@ -23,9 +23,9 @@ class SDKConfiguration:
     server_idx: Optional[int] = 0
     language: str = 'python'
     openapi_doc_version: str = '0.1.0'
-    sdk_version: str = '0.1.1'
+    sdk_version: str = '1.0.0'
     gen_version: str = '2.326.3'
-    user_agent: str = 'speakeasy-sdk/python 0.1.1 2.326.3 0.1.0 umbratic-mailengine'
+    user_agent: str = 'speakeasy-sdk/python 1.0.0 2.326.3 0.1.0 umbratic-mailengine'
     retry_config: Optional[RetryConfig] = None
 
     def __post_init__(self):

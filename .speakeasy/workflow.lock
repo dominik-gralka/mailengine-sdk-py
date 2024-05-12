@@ -12,3 +12,6 @@ workflow:
         python-package:
             target: python
             source: sample-source
+            publish:
+                pypi:
+                    token: $pypi_token
