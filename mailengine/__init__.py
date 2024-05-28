@@ -1,1 +1,1 @@
-from mailengine import MailEngineClient
+from .client import MailEngine

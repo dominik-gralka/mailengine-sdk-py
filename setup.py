@@ -8,7 +8,7 @@ setup(
     author="Umbratic",
     author_email="contact@umbratic.com",
     description="Python SDK for MailEngine",
-    url="https://github.com/your_username/mailengine-python-sdk",
+    url="https://github.com/dominik-gralka/mailengine-sdk-py",
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
