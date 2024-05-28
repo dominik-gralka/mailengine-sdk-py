@@ -4,3 +4,11 @@ __pycache__/
 .pytest_cache/
 .python-version
 .DS_Store
+
+# Python
+*.pyc
+*.pyo
+__pycache__/
+*.egg-info/
+dist/
+build/
